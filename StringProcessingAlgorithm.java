@@ -150,13 +150,27 @@ public class StringProcessingAlgorithm {
             count[s2.charAt(i)-'a']--;
         }
         for(int i=0;i<26;i++){
-            if(count[i]!=0){
+            if(count[i]!=0){    
                 System.out.println(false);
                 return;
             }
         }
         System.out.println(true);
     }
+
+
+    // Option 8: Reverse String by modifying the input array in-place with O(1) extra memory.
+    // Below sulution: Runtime: 1 ms, faster than 99.91% of Java online submissions on Leetcode
+    public static void reverseString(){
+        char[] s = originalText.toCharArray();
+        for(int i=0;i<s.length/2;i++){
+            char t = s[i];
+            s[i] = s[s.length-1-i];
+            s[s.length-1-i] = t;
+        }
+        System.out.println(s);
+    }
+    
 
     public static void main(String args[]){
 
@@ -170,13 +184,14 @@ public class StringProcessingAlgorithm {
 
         while (!option.equals("Q")) {
             System.out.println("=========== Options ============");
-            System.out.println("1: Split the string");
-            System.out.println("2: Remove all substring from string");
-            System.out.println("3: Shift the string");
-            System.out.println("4: Count number of vowels");
+            System.out.println("1: Split string");
+            System.out.println("2: Remove all substring");
+            System.out.println("3: Shift string");
+            System.out.println("4: Count vowels");
             System.out.println("5: Ceaser cipher");
-            System.out.println("6: First Unique char in string");
-            System.out.println("7: Compare composed char of string");
+            System.out.println("6: First unique char");
+            System.out.println("7: Compare string");
+            System.out.println("8: Reverse string");
             System.out.println("================================");
             System.out.println("Please choose an option (type in Q if you want to quit): ");
             option = reader.next();
@@ -202,6 +217,9 @@ public class StringProcessingAlgorithm {
                     break;
                 case "7":
                     sameChar();
+                    break;
+                case "8":
+                    reverseString();
                     break;
                 default:
                     if (option.equals("Q"))
